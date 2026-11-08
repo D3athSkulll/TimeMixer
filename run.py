@@ -81,6 +81,10 @@ parser.add_argument('--mask_rate', type=float, default=0.125, help='mask ratio')
 # anomaly detection task
 parser.add_argument('--anomaly_ratio', type=float, default=0.25, help='prior anomaly ratio (%)')
 
+#save learning curve
+ parser.add_argument('--save_learning_curve', type=int, default=1,
+                        help='Save per-epoch loss history CSV and learning curve plot during training')
+
 # optimization
 parser.add_argument('--num_workers', type=int, default=10, help='data loader num workers')
 parser.add_argument('--itr', type=int, default=1, help='experiments times')

@@ -137,3 +137,27 @@ def adjustment(gt, pred):
 
 def cal_accuracy(y_pred, y_true):
     return np.mean(y_pred == y_true)
+
+
+def save_learning_curve(history, image_path):
+    epochs = history.get('epoch', [])
+    train_loss = history.get('train_loss', [])
+    vali_loss = history.get('vali_loss', [])
+
+    plt.figure(figsize=(10, 6))
+    plt.title('Loss', fontsize=16)
+
+    if len(train_loss) > 0:
+        plt.plot(epochs, train_loss, label='train', color='tab:blue', linewidth=2)
+
+    if len(vali_loss) > 0:
+        plt.plot(epochs, vali_loss, label='validation', color='tab:orange', linewidth=2)
+
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    if len(epochs) > 0:
+        plt.xticks(epochs)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(image_path, bbox_inches='tight')
+    plt.close()
